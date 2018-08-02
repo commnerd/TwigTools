@@ -1,0 +1,17 @@
+{
+    "name": "commnerd/twig-tools",
+    "description": "A toolchain for Twig",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Michael J. Miller",
+            "email": "commnerd@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "TwigTools\\": ["src/"] }
+    },
+    "require": {
+         "twig/twig": "*"
+    }
+}
