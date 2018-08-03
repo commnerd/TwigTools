@@ -3,6 +3,7 @@
 namespace TwigTools;
 
 use Twig_Environment;
+use Twig_Markup;
 
 class FormBuilder {
 
@@ -12,8 +13,8 @@ class FormBuilder {
         $this->_twig = $twig;
     }
 
-    public function textarea(array $hash): string
+    public function textarea(array $hash)
     {
-        return "Hello World";
+        return new Twig_Markup($this->_twig->render('FormBuilder/textarea.html', $hash), 'UTF-8');
     }
 }

@@ -8,19 +8,15 @@ use Twig_Environment;
 
 class TwigTools {
     
-    protected $twig;
+    private $_twig;
 
     public function __construct(Twig_Environment $twig)
     {
-        $this->twig = $twig;
+        $this->_twig = $twig;
     }
 
     public function init()
     {
-        $this->addGlobal('formBuilder', new FormBuilder());
-    }
-
-    public function addGlobal($toolName, $object) {
-        $this->twig->addGlobal($toolName, $object);
+        $this->_twig->addGlobal('formBuilder', new FormBuilder($this->_twig));
     }
 }
