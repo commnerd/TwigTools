@@ -55,6 +55,17 @@ class FormBuilder {
     }
 
     /**
+     * Render text input 
+     *
+     * @param array $hash The values passed from the template
+     * @return            The rendered form section
+     */
+    public function textarea(array $hash)
+    {
+        return $this->_render('textinput.html', $hash);
+    }
+
+    /**
      * Render display data
      *
      * @param array $hash The values passed from the template
