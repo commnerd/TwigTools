@@ -71,7 +71,7 @@ class FormBuilder {
      * @param array $hash The values passed from the template
      * @return            The rendered form section
      */
-    public function textarea(array $hash)
+    public function textinput(array $hash)
     {
         return $this->_render('textinput.html', $hash);
     }
