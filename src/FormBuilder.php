@@ -44,6 +44,17 @@ class FormBuilder {
     }
 
     /**
+     * Render radio buttons
+     *
+     * @param array $hash The values passed from the template
+     * @return            The rendered form section
+     */
+    public function radios(array $hash)
+    {
+        return $this->_render('radios.html', $hash);
+    }
+
+    /**
      * Render text area
      *
      * @param array $hash The values passed from the template
