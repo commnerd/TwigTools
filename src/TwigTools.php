@@ -10,11 +10,17 @@ class TwigTools {
     
     private $_twig;
 
+    /**
+     * Construct TwigTools library
+     */
     public function __construct(Twig_Environment $twig)
     {
         $this->_twig = $twig;
     }
 
+    /**
+     * Initialize library
+     */
     public function init()
     {
         $this->_twig->addGlobal('formBuilder', new FormBuilder($this->_twig));
