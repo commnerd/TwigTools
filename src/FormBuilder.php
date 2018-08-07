@@ -44,6 +44,17 @@ class FormBuilder {
     }
 
     /**
+     * Render checkbox group
+     *
+     * @param array $hash The values passed from the template
+     * @return            The rendered form section
+     */
+    public function checkboxGroup(array $hash)
+    {
+        return $this->_render('checkboxGroup.html', $hash);
+    }
+
+    /**
      * Render radio buttons
      *
      * @param array $hash The values passed from the template
