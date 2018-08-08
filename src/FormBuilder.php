@@ -10,6 +10,7 @@ class FormBuilder {
     private $baseDir = 'FormBuilder';
     private $_twig;
     private $_model;
+    private $_radioName;
 
     /**
      * Initialize FormBuilder object
@@ -47,6 +48,15 @@ class FormBuilder {
     }
 
     /**
+     * Set the name for the radio buttons that follow
+     *
+     * @param string $name The name assigned to the following radio buttons
+     */
+    public function radioName($name) {
+        $this->_radioName = $name;
+    }
+
+    /**
      * Render a radio button
      *
      * @param string|array $slugLabel A string used as both the label and slug or the $hash (described below)
@@ -56,6 +66,8 @@ class FormBuilder {
     public function radio($slugLabel, array $hash = array())
     {
         $hash = $this->_manageLabelHashCombo($slugLabel, $hash);
+
+        $hash['name'] = $this->_radioName;
 
         return $this->_render('radio.html', $hash);
     }
