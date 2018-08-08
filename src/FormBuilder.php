@@ -119,7 +119,7 @@ class FormBuilder {
      */
     private function _render($template, array $hash) {
         if(!isset($hash['slug']) && !isset($hash['label'])) {
-            $hash['slug']  = key($values);
+            $hash['slug']  = key($hash);
             $hash['label'] = $hash[$hash['slug']];
         }
         if(isset($this->_model) && !isset($hash['model'])) {
