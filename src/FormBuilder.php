@@ -106,6 +106,12 @@ class FormBuilder {
      * @return                 The rendered form section
      */
     private function _render($template, array $hash) {
+        if(!isset($hash['slug']) && !isset($hash['label'])) {
+            $values = array_shift($hash);
+            $hash['label'] = $values[1];
+            $hash['slug']  = $values[0];
+            array_unshift($hash, $values);
+        }
         if(isset($this->_model) && !isset($hash['model'])) {
             $hash['model'] = $this->_model;
         }
