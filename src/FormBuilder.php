@@ -35,34 +35,29 @@ class FormBuilder {
     /**
      * Render checkbox
      *
-     * @param array $hash The values passed from the template
-     * @return            The rendered form section
+     * @param string|array $slugLabel A string used as both the label and slug or the $hash (described below)
+     * @param array        $hash      The values passed for the template, optional if $slugLabel is an array
+     * @return                        The rendered form section
      */
-    public function checkbox(array $hash)
+    public function checkbox($slugLabel, array $hash = array())
     {
+        $hash = $this->_manageLabelHashCombo($slugLabel, $hash);
+
         return $this->_render('checkbox.html', $hash);
     }
 
     /**
-     * Render checkbox group
+     * Render a radio button
      *
-     * @param array $hash The values passed from the template
-     * @return            The rendered form section
+     * @param string|array $slugLabel A string used as both the label and slug or the $hash (described below)
+     * @param array        $hash      The values passed for the template, optional if $slugLabel is an array
+     * @return                        The rendered form section
      */
-    public function checkboxGroup(array $hash)
+    public function radio($slugLabel, array $hash = array())
     {
-        return $this->_render('checkboxGroup.html', $hash);
-    }
+        $hash = $this->_manageLabelHashCombo($slugLabel, $hash);
 
-    /**
-     * Render radio buttons
-     *
-     * @param array $hash The values passed from the template
-     * @return            The rendered form section
-     */
-    public function radios(array $hash)
-    {
-        return $this->_render('radios.html', $hash);
+        return $this->_render('radio.html', $hash);
     }
 
     /**
@@ -96,6 +91,23 @@ class FormBuilder {
     public function data(array $hash)
     {
         return $this->_render('data.html', $hash);
+    }
+
+    /**
+     * Produce hash from lable/hash setup
+     *
+     * @param string|array $slugLabel A string used as both the label and slug or the $hash (described below)
+     * @param array        $hash      The values passed for the template, optional if $slugLabel is an array
+     * @return                        The hash to use for rendering
+     */
+    private function _manageLabelHashCombo($slugLabel, array $hash) {
+        if(is_array($slugLabel)) {
+            return array_merge($slugLabel, $hash);
+        }
+        if(is_string($slugLabel)) {
+            return array_merge(array($slugLabel => $slugLabel), $hash);
+        }
+        return $hash;
     }
 
     /**
